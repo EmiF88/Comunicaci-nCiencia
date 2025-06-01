@@ -8,22 +8,33 @@
   <script>
     function buscarContenido() {
       const input = document.getElementById('busqueda').value.toLowerCase();
-      const secciones = document.querySelectorAll('section');
+      const secciones = document.querySelectorAll('main section');
       secciones.forEach(sec => {
         sec.style.display = sec.textContent.toLowerCase().includes(input) ? 'block' : 'none';
       });
     }
+
+    function mostrarSeccion(id) {
+      const secciones = document.querySelectorAll('main section');
+      secciones.forEach(sec => {
+        sec.style.display = sec.id === id ? 'block' : 'none';
+      });
+    }
+
+    window.onload = () => {
+      mostrarSeccion('linea'); // Muestra solo la primera sección al cargar
+    };
   </script>
 </head>
 <body class="bg-gray-100 text-gray-800">
   <!-- Navbar -->
-  <nav class="bg-white shadow p-4 flex justify-between items-center">
+  <nav class="bg-white shadow p-4 flex flex-col md:flex-row justify-between items-center gap-4">
     <h1 class="text-xl font-bold">Cuerpo académico de neumología y epidemiología</h1>
-    <ul class="flex gap-4">
-      <li><a href="#linea" class="hover:text-blue-500">Línea de Investigación</a></li>
-      <li><a href="#articulos" class="hover:text-blue-500">Artículos</a></li>
-      <li><a href="#autores" class="hover:text-blue-500">Autores</a></li>
-      <li><a href="#galeria" class="hover:text-blue-500">Galería</a></li>
+    <ul class="flex gap-4 flex-wrap justify-center">
+      <li><button onclick="mostrarSeccion('linea')" class="hover:text-blue-500">Línea de Investigación</button></li>
+      <li><button onclick="mostrarSeccion('articulos')" class="hover:text-blue-500">Artículos</button></li>
+      <li><button onclick="mostrarSeccion('autores')" class="hover:text-blue-500">Autores</button></li>
+      <li><button onclick="mostrarSeccion('galeria')" class="hover:text-blue-500">Galería</button></li>
     </ul>
     <div class="relative">
       <input id="busqueda" type="text" placeholder="Buscar..." onkeyup="buscarContenido()" class="border p-1 rounded pl-8" />
@@ -40,7 +51,7 @@
       <p>Nuestras líneas de investigación se enfocan en el estudio de enfermedades respiratorias y su impacto epidemiológico, con el objetivo de desarrollar estrategias para la prevención, diagnóstico y tratamiento que mejoren la salud pulmonar de la población.</p>
     </section>
 
-    <section id="articulos" class="bg-white p-6 rounded shadow">
+    <section id="articulos" class="bg-white p-6 rounded shadow hidden">
       <h2 class="text-2xl font-semibold mb-2">Artículos Publicados</h2>
       <ul class="list-disc list-inside">
         <li>
@@ -54,7 +65,7 @@
       </ul>
     </section>
 
-    <section id="autores" class="bg-white p-6 rounded shadow">
+    <section id="autores" class="bg-white p-6 rounded shadow hidden">
       <h2 class="text-2xl font-semibold mb-2">Acerca de los Autores</h2>
       <div class="grid md:grid-cols-2 gap-6 items-center">
         <div>
@@ -88,7 +99,7 @@
       </div>
     </section>
 
-    <section id="galeria" class="bg-white p-6 rounded shadow">
+    <section id="galeria" class="bg-white p-6 rounded shadow hidden">
       <h2 class="text-2xl font-semibold mb-2">Galería</h2>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         <img src="WebImg1.jpg" alt="Imagen 1" class="rounded shadow" />
