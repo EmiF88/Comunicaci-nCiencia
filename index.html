@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog de Investigación Científica</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function buscarContenido() {
+      const input = document.getElementById('busqueda').value.toLowerCase();
+      const secciones = document.querySelectorAll('section');
+      secciones.forEach(sec => {
+        sec.style.display = sec.textContent.toLowerCase().includes(input) ? 'block' : 'none';
+      });
+    }
+  </script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <!-- Navbar -->
+  <nav class="bg-white shadow p-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold">Blog Científico</h1>
+    <ul class="flex gap-4">
+      <li><a href="#linea" class="hover:text-blue-500">Línea de Investigación</a></li>
+      <li><a href="#articulos" class="hover:text-blue-500">Artículos</a></li>
+      <li><a href="#autores" class="hover:text-blue-500">Autores</a></li>
+      <li><a href="#galeria" class="hover:text-blue-500">Galería</a></li>
+    </ul>
+    <div class="relative">
+      <input id="busqueda" type="text" placeholder="Buscar..." onkeyup="buscarContenido()" class="border p-1 rounded pl-8" />
+      <svg class="w-4 h-4 absolute left-2 top-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1116.65 16.65z" />
+      </svg>
+    </div>
+  </nav>
+
+  <!-- Secciones -->
+  <main class="p-6 space-y-12">
+    <section id="linea" class="bg-white p-6 rounded shadow">
+      <h2 class="text-2xl font-semibold mb-2">Línea de Investigación</h2>
+      <p>Nuestras líneas de investigación se centran en la biotecnología, neurociencia, y sostenibilidad ambiental, buscando soluciones innovadoras para los desafíos del siglo XXI.</p>
+    </section>
+
+    <section id="articulos" class="bg-white p-6 rounded shadow">
+      <h2 class="text-2xl font-semibold mb-2">Artículos Publicados</h2>
+      <ul class="list-disc list-inside">
+        <li><a href="#" class="text-blue-600 hover:underline">Efectos del cambio climático en la biodiversidad marina (2024)</a></li>
+        <li><a href="#" class="text-blue-600 hover:underline">Nuevas fronteras en neurotecnología aplicada (2023)</a></li>
+        <li><a href="#" class="text-blue-600 hover:underline">Bioplásticos: innovación sostenible (2022)</a></li>
+      </ul>
+    </section>
+
+    <section id="autores" class="bg-white p-6 rounded shadow">
+      <h2 class="text-2xl font-semibold mb-2">Acerca de los Autores</h2>
+      <p>El equipo está compuesto por investigadores multidisciplinarios con experiencia en ciencia de materiales, biología molecular y computación científica.</p>
+    </section>
+
+    <section id="galeria" class="bg-white p-6 rounded shadow">
+      <h2 class="text-2xl font-semibold mb-2">Galería</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <img src="https://via.placeholder.com/150" alt="Imagen 1" class="rounded shadow" />
+        <img src="https://via.placeholder.com/150" alt="Imagen 2" class="rounded shadow" />
+        <img src="https://via.placeholder.com/150" alt="Imagen 3" class="rounded shadow" />
+        <img src="https://via.placeholder.com/150" alt="Imagen 4" class="rounded shadow" />
+      </div>
+    </section>
+  </main>
+</body>
+</html>
